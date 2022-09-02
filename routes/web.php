@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    // Event::create([
+    //     'name' => 'concert de damso',
+    //     'description' => 'damso est en tournee europeene avec son albom ceinture noire',
+    //     'location' => 'les capitales des pays de l\'EU',
+    //     'price' => 80
+    // ]);
+
+    $events = Event::all();
+
+    return view('events.index', compact($events));
 });
