@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Events</title>
+    <style>
+        .bling{
+            background: rgba(253, 45, 253, 0.416)
+        }
+        .blang{
+            background: #f671719f
+        }
+    </style>
 </head>
 <body>
-    <h1> {{ count( $events ) }} </h1>
+    <h1>{{ count( $events ) }} Events </h1>
     @foreach ($events as $event)
-        <article>
+        <article class="{{ $loop->index % 2 == 0 ? 'bling' : 'blang'}}">
             <h3> {{ $event->name }} </h3>
             <p> {{ $event->description }} </p>
             <i> {{ $event->price }} </i>
             <p> Lieu: {{ $event->location }} </p>
-            <hr>
+            @if (! $loop->last)
+                <hr>
+            @endif
         </article>
     @endforeach
 </body>
