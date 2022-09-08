@@ -15,13 +15,14 @@
     </style>
 </head>
 <body>
-    <h1>{{ count( $events ) }} Events </h1>
+    <h1>{{ $events->count() }} Events </h1>
     @foreach ($events as $event)
         <article class="{{ $loop->index % 2 == 0 ? 'bling' : 'blang'}}">
             <h3> {{ $event->name }} </h3>
             <p> {{ $event->description }} </p>
-            <i> {{ $event->price }} </i>
+            <i> {{ format_price($event) }} </i>
             <p> Lieu: {{ $event->location }} </p>
+            <p>Date: {{ $event->starts_at->format('d,M/Y H:i ') }}</p>
             @if (! $loop->last)
                 <hr>
             @endif
