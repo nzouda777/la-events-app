@@ -20,9 +20,9 @@
         <article class="{{ $loop->index % 2 == 0 ? 'bling' : 'blang'}}">
             <h3> {{ $event->name }} </h3>
             <p> {{ $event->description }} </p>
-            <i> {{ format_price($event) }} </i>
+            <i> {{ $formatPrice($event) }} </i>
             <p> Lieu: {{ $event->location }} </p>
-            <p>Date: {{ $event->starts_at->format('d,M/Y H:i ') }}</p>
+            <p>Date: {{ $formatDate($event->starts_at) }} </p>
             @if (! $loop->last)
                 <hr>
             @endif

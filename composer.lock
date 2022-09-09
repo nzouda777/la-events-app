@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cead9f309b964d144f52c43672bc1817",
+    "content-hash": "72bc07e39cb88496e5f273bf0cb7c3dd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1668,6 +1668,59 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "mercuryseries/laravel-helpers",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercuryseries/laravel-helpers.git",
+                "reference": "5e18168f75238c52d10104f81e93ddb90e242bd6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercuryseries/laravel-helpers/zipball/5e18168f75238c52d10104f81e93ddb90e242bd6",
+                "reference": "5e18168f75238c52d10104f81e93ddb90e242bd6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0|~6.0|~7.0|~8.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MercurySeries\\Helpers\\HelpersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MercurySeries\\Helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Honore Hounwanou",
+                    "email": "mercuryseries@gmail.com"
+                }
+            ],
+            "description": "Dynamic Method Helpers",
+            "keywords": [
+                "helpers",
+                "laravel",
+                "methods"
+            ],
+            "support": {
+                "issues": "https://github.com/mercuryseries/laravel-helpers/issues",
+                "source": "https://github.com/mercuryseries/laravel-helpers/tree/1.0.5"
+            },
+            "time": "2020-05-30T15:42:29+00:00"
         },
         {
             "name": "monolog/monolog",
