@@ -22,7 +22,7 @@ Route::get('/', function () {
     //     'location' => 'belgique',
     //     'price' => 80
     // ]);
-
+        return Event::first();
     $events = Event::all();
 //    dd($events->filter( function($event, $key){
 //         return $event->price > 30;

@@ -20,6 +20,7 @@
         <article class="{{ $loop->index % 2 == 0 ? 'bling' : 'blang'}}">
             <h3> {{ $event->name }} </h3>
             <p> {{ $event->description }} </p>
+            <i>fake price: {{ $event->fake_price }} </i>
             <i> {{ $formatPrice($event) }} </i>
             <p> Lieu: {{ $event->location }} </p>
             <p>Date: {{ $formatDate($event->starts_at) }} </p>
