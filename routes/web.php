@@ -30,17 +30,9 @@ Route::post('/', function(){
     //cree une nouvelle short url et la retourner
     //
 
-        function get_unique_short_url(){
-            $shortened = str_random(5);
-            if (Url::whereShortened($shortened)->count() != 0) {
-                # code...
-                return get_unique_short_url();
-            }
-            return $shortened;
-        }
     $row = Url::create([
         'url' => request('url'),
-        'shortened' => get_unique_short_url()
+        'shortened' => Url::getUniqueShortUrl()
     ]);
     if ($row) {
         # code...
