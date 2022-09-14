@@ -37,7 +37,7 @@ Route::post('/', function(){
     if ($row) {
         # code...
 
-        return view('result')->with('shortened', $url->shortened);
+        return view('result')->with('shortened', $row->shortened);
     }
     //felicitaion voici l'url raccourcie
 });

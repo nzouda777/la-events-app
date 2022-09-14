@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class Url extends Model
 {
     use HasFactory;
@@ -15,7 +15,7 @@ class Url extends Model
     //methods
 
     public static function getUniqueShortUrl() {
-        $shortened = str_random(5);
+        $shortened = Str::random(5);
         if(static::whereShortened($shortened)->count() != 0){
             return static::getUniqueShortUrl();
         }
