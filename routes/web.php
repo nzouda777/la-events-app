@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Url;
 /*
 |--------------------------------------------------------------------------
@@ -19,19 +20,26 @@ Route::get('/', function () {
 Route::post('/', function(){
     //valider l'url
     //
+    $url = request('url');
+    $data = ['url'=> $url];
+     Validator::make(compact('url'),
+     ['url' => 'required|url']
+
+    )->validate();
+
     //verifier si l'url a deja ete raccourcie et la retourer si tel est le cas
     //
-    $url = Url::where('url', request('url'))->first();
+    $record = Url::where('url', $url)->first();
 
-    if ($url) {
+    if ($record) {
         # code...
-        return view('result')->with('shortened', $url->shortened);
+        return view('result')->with('shortened', $record->shortened);
     }
     //cree une nouvelle short url et la retourner
     //
 
     $row = Url::create([
-        'url' => request('url'),
+        'url' => $url,
         'shortened' => Url::getUniqueShortUrl()
     ]);
     if ($row) {
