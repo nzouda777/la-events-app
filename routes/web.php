@@ -23,9 +23,7 @@ Route::post('/', function(){
     $url = request('url');
     $data = ['url'=> $url];
      Validator::make(compact('url'),
-     ['url' => 'required|url']
-
-    )->validate();
+     ['url' => 'required|url'],)->validate();
 
     //verifier si l'url a deja ete raccourcie et la retourer si tel est le cas
     //
