@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use Illuminate\Http\Request;
+use MercurySeries\Flashy\Flashy;
 use App\Http\Requests\EventFormRequest;
 class EventsController extends Controller
 {
@@ -14,8 +14,10 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
-        $events = Event::all();
+        //to get all events
+        //$events = Event::all();
+        //to paginate event
+        $events = Event::simplePaginate(2);
         return view('events.index', compact('events'));
     }
 
@@ -26,8 +28,9 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
-        return view('events.create');
+        //lorsque on fait du form inheritance, on doit passer une variable correspondante a creation d'un nouvel objet afin que cette derniere ne genere pas d'erreur dans la vue
+        $event = new Event;
+        return view('events.create', compact('event'));
     }
 
     /**
@@ -41,6 +44,10 @@ class EventsController extends Controller
         //
 
         Event::create(['title' => $request->title, 'description' => $request->description]);
+        #creation des messages flash
+        //flash('Evenement creer avec success');
+        #creation des custom flash message avec flashy
+        Flashy::message('Evenement cree avec success');
         return redirect()->route('home');
     }
 
@@ -50,10 +57,11 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    //implicit route model binding
+    public function show(Event $event)
     {
         //
-        $event = Event::findOrFail($id);
+
         return view('events.show', compact('event'));
     }
 
@@ -83,6 +91,9 @@ class EventsController extends Controller
         $event = Event::findOrFail($id);
         $updatedEvent = ['title' => $request->title, 'description' => $request->description];
         $event->update($updatedEvent);
+        //flash('Evenement modifier avec success');
+        Flashy::message('Evenement Modifier avec success');
+
         return redirect()->route('events.show', $event);
     }
 
@@ -96,6 +107,8 @@ class EventsController extends Controller
     {
         //
         Event::destroy($id);
+        // flash('Evenement supprimer avec success', 'danger');
+        Flashy::error('evenement supprime avec succes');
         return redirect()->route('home');
     }
 }

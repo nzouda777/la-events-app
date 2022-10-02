@@ -8,6 +8,7 @@
             @foreach ($events as $event)
                 <li> <a href="{{ route('events.show', ['event' => $event->id ]) }}">{{ $event->title }}</a> </li>
             @endforeach
+            {{ $events->links() }}
         @else
             <p>pas d'evenement pour le moment </p>
         @endif

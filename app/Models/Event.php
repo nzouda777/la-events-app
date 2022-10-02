@@ -9,4 +9,6 @@ class Event extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'description'];
+
+    //the $guarded var is used to able to fill every kind of field
 }
