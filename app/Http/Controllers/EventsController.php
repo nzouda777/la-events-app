@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use MercurySeries\Flashy\Flashy;
+use Illuminate\Support\Str;
 use App\Http\Requests\EventFormRequest;
 class EventsController extends Controller
 {
@@ -43,7 +44,10 @@ class EventsController extends Controller
     {
         //
 
-        Event::create(['title' => $request->title, 'description' => $request->description]);
+        Event::create([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
         #creation des messages flash
         //flash('Evenement creer avec success');
         #creation des custom flash message avec flashy
@@ -61,7 +65,6 @@ class EventsController extends Controller
     public function show(Event $event)
     {
         //
-
         return view('events.show', compact('event'));
     }
 
@@ -71,10 +74,9 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
         //
-        $event = Event::findOrFail($id);
         return view('events.edit', compact('event'));
     }
 
@@ -89,7 +91,10 @@ class EventsController extends Controller
     {
         //
         $event = Event::findOrFail($id);
-        $updatedEvent = ['title' => $request->title, 'description' => $request->description];
+        $updatedEvent = [
+            'title' => $request->title,
+            'description' => $request->description
+        ];
         $event->update($updatedEvent);
         //flash('Evenement modifier avec success');
         Flashy::message('Evenement Modifier avec success');

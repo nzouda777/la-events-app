@@ -6,7 +6,7 @@
     <ul>
         @if (! $events->isEmpty())
             @foreach ($events as $event)
-                <li> <a href="{{ route('events.show', ['event' => $event->id ]) }}">{{ $event->title }}</a> </li>
+                <li> <a href="{{ route('events.show', ['event' => $event ]) }}">{{ $event->title }}</a> </li>
             @endforeach
             {{ $events->links() }}
         @else

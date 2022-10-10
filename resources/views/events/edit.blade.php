@@ -3,7 +3,7 @@
 @section('content')
 <center><h1>Editing event #{{ $event->id }}</h1></center>
 
-<form action="{{ route('events.update', $event) }}" method="POST">
+<form action="{{ route('events.update', $event->id) }}" method="POST">
     @csrf
     {{ method_field('PUT')}}
     @include('events._form', ["submitButtonText" => 'Modifier un evenement'])
